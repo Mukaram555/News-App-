@@ -49,6 +49,7 @@ class PasswordVisibilityProvider with ChangeNotifier {
   bool _isVisibility = true;
 
   bool get isVisibility => _isVisibility;
+
   void Show() {
     _isVisibility = !_isVisibility;
     SchedulerBinding.instance.addPersistentFrameCallback((timeStamp) {
@@ -61,6 +62,7 @@ class ConfermPasswordVisibilityProvider with ChangeNotifier {
   bool _isVisibility = true;
 
   bool get isVisibility => _isVisibility;
+
   void Show() {
     _isVisibility = !_isVisibility;
     SchedulerBinding.instance.addPersistentFrameCallback((timeStamp) {

@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:news_app/SRC/Presentation/Widgets/See%20All%20Tabs/latest_see_all.dart';
 import 'package:news_app/SRC/Presentation/Widgets/components/Notification/notification_Screen.dart';
-import 'package:news_app/SRC/Presentation/Widgets/components/latest_see_all.dart';
+
 import 'home_page_all_tabs.dart';
 import 'trending_home_page.dart';
 
@@ -16,8 +18,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
+  // ignore: unused_field
   final TextEditingController _sreachController = TextEditingController();
-  String _searchQuery = '';
+
+  // ignore: unused_field
+  // String _searchQuery = '';
   late TabController tabController;
   ValueNotifier<int> currentIndex = ValueNotifier(0);
   ValueNotifier<bool> isChanging = ValueNotifier(false);
@@ -35,6 +40,7 @@ class _HomePageState extends State<HomePage>
     'Movies',
     'Fashion',
   ];
+
   // Future _change(int index) async {
   //   await Future.delayed(Duration(seconds: 2), () {
   //     setState(() {
@@ -55,19 +61,20 @@ class _HomePageState extends State<HomePage>
 
       if (isChanging.value) return; // prevent multiple triggers
 
-       isChanging.value = true;
+      isChanging.value = true;
 
       // Wait for 2 seconds before updating
       await Future.delayed(const Duration(seconds: 2));
 
-      print(currentIndex.value);
+      if (kDebugMode) {
+        print(currentIndex.value);
+      }
       if (mounted) {
         isChanging.value = false;
         currentIndex.value = tabController.index;
-        print("======== current Index ===============");
+        // print("======== current Index ===============");
 
-        print(currentIndex.value);
-
+        // print(currentIndex.value);
       }
     });
   }
@@ -80,9 +87,6 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-
-
-
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -115,12 +119,22 @@ class _HomePageState extends State<HomePage>
                         child: Padding(
                           padding: EdgeInsets.all(5.0.r),
                           child: GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> NotificationPage()));
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => NotificationPage(),
+                                ),
+                              );
                             },
                             child: SvgPicture.asset(
                               'assets/icons/notification_icon.svg',
-                              color: Theme.of(context).colorScheme.onSurface,
+                              colorFilter: ColorFilter.mode(
+                                Theme.of(context)
+                                    .colorScheme
+                                    .onSurface, // The color you want to apply
+                                BlendMode.srcIn, // The blend mode to use
+                              ),
                             ),
                           ),
                         ),
@@ -157,6 +171,11 @@ class _HomePageState extends State<HomePage>
                         borderRadius: BorderRadius.circular(10.r),
                       ),
                       child: SearchBar(
+                        textStyle: WidgetStateProperty.all(
+                          Theme.of(
+                            context,
+                          ).textTheme.bodyMedium?.copyWith(fontSize: 12),
+                        ),
                         surfaceTintColor: WidgetStateProperty.all(
                           Theme.of(context).colorScheme.tertiaryContainer,
                         ),
@@ -165,16 +184,27 @@ class _HomePageState extends State<HomePage>
                             'assets/icons/menu_icon.svg',
                             height: 12.h,
                             width: 12.w,
-                            color: Theme.of(context).colorScheme.onSurface,
+                            colorFilter: ColorFilter.mode(
+                              Theme.of(context)
+                                  .colorScheme
+                                  .onSurface, // The color you want to apply
+                              BlendMode.srcIn, // The blend mode to use
+                            ),
                           ),
                         ],
                         leading: SvgPicture.asset(
                           height: 12.h,
                           width: 12.w,
                           'assets/icons/search_icons.svg',
-                          color: Theme.of(context).colorScheme.onSurface,
+                          colorFilter: ColorFilter.mode(
+                            Theme.of(context)
+                                .colorScheme
+                                .onSurface, // The color you want to apply
+                            BlendMode.srcIn, // The blend mode to use
+                          ),
                         ),
                         hintText: 'Search',
+
                         hintStyle: WidgetStateProperty.all(
                           Theme.of(
                             context,
@@ -236,20 +266,36 @@ class _HomePageState extends State<HomePage>
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text("Trending", style: Theme.of(context).textTheme.bodyMedium,), InkWell(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> LatestSeeAll(isTrending: true,)));
+                      children: [
+                        Text(
+                          "Trending",
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    LatestSeeAll(isTrending: true),
+                              ),
+                            );
                           },
-                          child: Text("See all", style: Theme.of(context).textTheme.bodyMedium,))],
+                          child: Text(
+                            "See all",
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(height: 20.h),
-                  Container(
+                  SizedBox(
                     height: 330.h,
                     width: 390.w,
 
                     // direction: Axis.horizontal,
-                    child: TrendingHomePage(isAxis: true,),
+                    child: TrendingHomePage(isAxis: true),
                   ),
                 ],
               ),
@@ -264,14 +310,26 @@ class _HomePageState extends State<HomePage>
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Latest", style: Theme.of(context).textTheme.bodyMedium,),
+                        Text(
+                          "Latest",
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
 
                         InkWell(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> LatestSeeAll(isTrending: false,)));
-                              
-                            },
-                            child: Text("See all", style: Theme.of(context).textTheme.bodyMedium,))
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    LatestSeeAll(isTrending: false),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            "See all",
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(height: 20.h),
@@ -322,21 +380,21 @@ class _HomePageState extends State<HomePage>
                       ),
                     ),
             );
-          }
+          },
         ),
       ),
-
-
     );
   }
 }
 
 class SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
   final TabBar tabBar;
+
   SliverTabBarDelegate(this.tabBar);
 
   @override
   double get minExtent => tabBar.preferredSize.height;
+
   @override
   double get maxExtent => tabBar.preferredSize.height;
 
@@ -355,6 +413,7 @@ class SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
   @override
   bool shouldRebuild(SliverTabBarDelegate oldDelegate) => false;
 }
+
 // body: CustomScrollView(
 //   slivers: [
 //     SliverAppBar(

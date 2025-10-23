@@ -47,5 +47,8 @@ List<TopicsModel> TopicsModelData = [
   TopicsModel(topicsName: 'Fashion', topicTitle: 'Stay updated on fashion trends, designer news, and style inspiration', topicsImages: 'assets/images/fashion.jpeg'
 
   ),
+  TopicsModel(topicsName: 'World', topicTitle: 'Stay updated on fashion trends, designer news, and style inspiration', topicsImages: 'assets/images/fashion.jpeg'
+
+  ),
 
 ];

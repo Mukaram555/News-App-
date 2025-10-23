@@ -7,12 +7,12 @@ class ApiService {
     try {
       final response = await http.get(
         Uri.parse(
-          'https://api.nytimes.com/svc/topstories/v2/${type}.json?api-key=CRd67irJ8kAnHDtl79R8Rqcj3ptElrJT',
+          'https://api.nytimes.com/svc/topstories/v2/$type.json?api-key=CRd67irJ8kAnHDtl79R8Rqcj3ptElrJT',
         ),
       ); //await _response(type = type);
-      print(response.body);
+      // print(response.body);
       if (response.statusCode == 200) {
-        print("======= responding Now =======");
+        // print("======= responding Now =======");
         // return newsModelWorldFromJson(response.body);
         return NewsModel.fromJson(jsonDecode(response.body));
       } else if (response.statusCode == 429 ||
@@ -21,12 +21,12 @@ class ApiService {
         // Handle rate limit
         throw Exception('Rate limit exceeded. Please try again later.');
       }else {
-        print('========== not risponding ========');
+        // print('========== not risponding ========');
         throw Exception(json.decode(response.body)['fault']['faultstring']);
       }
     } catch (e) {
-      print('=================');
-      print(e);
+      // print('=================');
+      // print(e);
       throw Exception("data not loading");
     }
   }

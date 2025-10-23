@@ -42,8 +42,8 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
         isFocus = false;
       }
 
-      print('==================================');
-      print(isFocus);
+      // print('==================================');
+      // print(isFocus);
     });
   }
 
@@ -101,7 +101,7 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
     // });
     // }
 
-    return Container(
+    return SizedBox(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
