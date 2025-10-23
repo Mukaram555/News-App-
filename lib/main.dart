@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/SRC/Data/Resources/ThemesData/dark_theme_data.dart';
-// import 'package:news_app/SRC/Data/Resources/ThemesData/light_theme_data.dart';
+import 'package:news_app/SRC/Data/Resources/ThemesData/light_theme_data.dart';
 import 'package:news_app/SRC/Presentation/Widgets/Auth/Login/controller/Providers/password_visibility_provider.dart';
-import 'package:news_app/SRC/Presentation/Widgets/components/bottom_navigation.dart';
+import 'package:news_app/SRC/Presentation/Widgets/components/splash_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'SRC/Presentation/Widgets/components/SettingsUI/Theme Convertion/theme_provider.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -24,14 +31,20 @@ class MyApp extends StatelessWidget {
       builder: (_, child) {
         return MultiProvider(
           providers: [
+            ChangeNotifierProvider(create: (_) => ThemeProvider()),
             ChangeNotifierProvider(create: (_) => PasswordVisibilityProvider()),
             ChangeNotifierProvider(create: (_) => EmailVisibilityProvider()),
           ],
-          child: MaterialApp(
-            title: 'News APP',
-            theme: darkTheme,
-            debugShowCheckedModeBanner: false,
-            home: Scaffold(body: SafeArea(child: BottomNavigationPage())),
+          child: Consumer<ThemeProvider>(
+
+            builder: (context, value, child) {
+              return MaterialApp(
+                title: 'News APP',
+                theme: value.light ? darkTheme : lightTheme,
+                debugShowCheckedModeBanner: false,
+                home: Scaffold(body: SafeArea(child: SplashScreen())),
+              );
+            }
           ),
         );
       },

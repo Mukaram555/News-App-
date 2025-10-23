@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/SRC/Presentation/Common/common_ui.dart';
+import 'package:news_app/SRC/Presentation/Common/Common/common_ui.dart';
 
 class Singup extends StatelessWidget {
   const Singup({super.key});

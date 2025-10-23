@@ -48,7 +48,7 @@ class _TextFieldCustomState extends State<TextFieldPassCustom> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -1,8 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/SRC/Presentation/Common/Button/custom_button.dart';
 
-import '../Auth/Login/UI Screens/login_screen.dart';
+import '../UI Screens/login_screen.dart';
 
 class SuccessResetPasssScreen extends StatelessWidget {
   const SuccessResetPasssScreen({super.key});
@@ -15,7 +16,7 @@ class SuccessResetPasssScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: 170.h,
               width: 315.w,
               child: Center(
@@ -39,7 +40,9 @@ class SuccessResetPasssScreen extends StatelessWidget {
         padding: EdgeInsets.all(20.0),
         child: InkWell(
           onTap: () {
-            print('=====================');
+            if (kDebugMode) {
+              print('=====================');
+            }
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => LoginScreen()),

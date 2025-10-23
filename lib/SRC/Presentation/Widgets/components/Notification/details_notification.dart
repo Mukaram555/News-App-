@@ -65,6 +65,7 @@ class _DetailsNotificationState extends State<DetailsNotification> {
                               SizedBox(
                                 width: 20,
                               ),
+                              // ignore: sized_box_for_whitespace
                               Container(
                                 width: 230.0.h,
                                 child: Text('You have a new notification!'),
@@ -78,7 +79,7 @@ class _DetailsNotificationState extends State<DetailsNotification> {
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
                                   onTap: (){
-                                    print("===========================");
+                                    // print("===========================");
                                     isCancel.value = true;
                                   },
                                   child: Icon(Icons.cancel_outlined)),

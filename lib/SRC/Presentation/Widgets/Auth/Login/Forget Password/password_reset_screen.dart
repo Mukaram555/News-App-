@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/SRC/Presentation/Common/Button/custom_button.dart';
 import 'package:news_app/SRC/Presentation/Common/Textfield/text_field_pass.dart';
-import 'package:news_app/SRC/Presentation/Widgets/components/success_reset_passs_screen.dart';
+import 'package:news_app/SRC/Presentation/Widgets/Auth/Login/Forget%20Password/success_reset_passs_screen.dart';
 
 class PasswordResetScreen extends StatelessWidget {
   const PasswordResetScreen({super.key});
@@ -70,12 +70,16 @@ class PasswordResetScreen extends StatelessWidget {
                 ),
                 (Route<dynamic> route) => false,
               );
-            } else if (password.value.text.isEmpty ==
-                    confermPassword.value.text.isEmpty ||
-                password.value.text.isEmpty ||
+            } else if (password.value.text != confermPassword.value.text) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Password not Match we can not be Procesed'),
+                ),
+              );
+            } else if (password.value.text.isEmpty ||
                 confermPassword.value.text.isEmpty) {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Empty Password not be Process')),
+                const SnackBar(content: Text('The Password Is Empty')),
               );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(
