@@ -1,9 +1,11 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_app/SRC/Presentation/Widgets/components/Bookmark/bookmark_pages.dart';
 import 'package:news_app/SRC/Presentation/Widgets/components/Explore/explore_page.dart';
-import 'package:news_app/SRC/Presentation/Widgets/components/Profile/profile.dart';
+import 'package:news_app/SRC/Presentation/Widgets/components/Profile/main_profile.dart';
 // import 'package:news_app/SRC/Presentation/Widgets/components/home%20PageUi/example.dart';
 import 'package:news_app/SRC/Presentation/Widgets/components/home%20PageUi/home_page.dart';
 
@@ -34,7 +36,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _selectPage[_currentIndex],
+      body: SafeArea(child: _selectPage[_currentIndex]),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _onItemTapped,

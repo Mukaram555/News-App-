@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/SRC/Data/Models/channals_models.dart';
-import 'package:news_app/SRC/Presentation/Common/Button/custom_button.dart';
-import 'package:news_app/SRC/Presentation/Common/Textfield/search_field.dart';
-import 'package:news_app/SRC/Presentation/Widgets/components/profile_screen.dart';
+import 'package:news_app/SRC/Presentation/Widgets/components/Profile/edit_profile_screen.dart';
+
+import '../../../../Common/Button/custom_button.dart';
+import '../../../../Common/Textfield/search_field.dart';
 
 class ChannelSelection extends StatefulWidget {
   const ChannelSelection({super.key});
@@ -39,7 +40,7 @@ class _ChannalSelectionState extends State<ChannelSelection> {
                     child: const Icon(Icons.arrow_back),
                   ),
                   Text(
-                    'Choose Favorite Topics',
+                    'Choose Favorite Channel',
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const SizedBox(width: 24),
@@ -170,11 +171,14 @@ class _ChannalSelectionState extends State<ChannelSelection> {
             if (filteredChannel.isNotEmpty) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfileScreen()),
+                MaterialPageRoute(
+                  builder: (context) =>
+                      ProfileScreen(title: 'Fill Your Profile'),
+                ),
               );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Choose at least one topic')),
+                const SnackBar(content: Text('Choose at least one channel')),
               );
             }
           },

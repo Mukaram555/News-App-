@@ -1,5 +1,5 @@
 // lib/SRC/Presentation/Screens/comment_screen.dart
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/SRC/Data/Models/comment_model.dart';
@@ -32,7 +32,8 @@ class _CommentScreenState extends State<CommentScreen> {
       id: '1',
       userId: 'user1',
       userName: 'John Doe',
-      userAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+      userAvatar:
+          'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
       content: 'This is a great article! Really enjoyed reading it.',
       timestamp: DateTime.now().subtract(Duration(hours: 2)),
       likes: 15,
@@ -41,7 +42,8 @@ class _CommentScreenState extends State<CommentScreen> {
           id: '1-1',
           userId: 'user2',
           userName: 'Sarah Smith',
-          userAvatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
+          userAvatar:
+              'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
           content: 'I totally agree with you John!',
           timestamp: DateTime.now().subtract(Duration(hours: 1)),
           likes: 5,
@@ -52,8 +54,10 @@ class _CommentScreenState extends State<CommentScreen> {
       id: '2',
       userId: 'user3',
       userName: 'Mike Johnson',
-      userAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-      content: 'The research presented here is quite comprehensive. Would love to see more data on this topic.',
+      userAvatar:
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+      content:
+          'The research presented here is quite comprehensive. Would love to see more data on this topic.',
       timestamp: DateTime.now().subtract(Duration(hours: 3)),
       likes: 8,
       isLiked: true,
@@ -62,8 +66,10 @@ class _CommentScreenState extends State<CommentScreen> {
       id: '3',
       userId: 'user4',
       userName: 'Emily Chen',
-      userAvatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-      content: 'As someone working in this field, I can confirm these findings align with current industry trends.',
+      userAvatar:
+          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+      content:
+          'As someone working in this field, I can confirm these findings align with current industry trends.',
       timestamp: DateTime.now().subtract(Duration(hours: 5)),
       likes: 12,
       replies: [
@@ -71,7 +77,8 @@ class _CommentScreenState extends State<CommentScreen> {
           id: '3-1',
           userId: 'user5',
           userName: 'David Wilson',
-          userAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
+          userAvatar:
+              'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
           content: 'Thanks for sharing your professional insight Emily!',
           timestamp: DateTime.now().subtract(Duration(hours: 4)),
           likes: 3,
@@ -80,8 +87,10 @@ class _CommentScreenState extends State<CommentScreen> {
           id: '3-2',
           userId: 'user1',
           userName: 'John Doe',
-          userAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-          content: 'Could you elaborate more on which trends you\'re referring to?',
+          userAvatar:
+              'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+          content:
+              'Could you elaborate more on which trends you\'re referring to?',
           timestamp: DateTime.now().subtract(Duration(hours: 3)),
           likes: 2,
         ),
@@ -95,9 +104,12 @@ class _CommentScreenState extends State<CommentScreen> {
 
     final newComment = Comment(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
-      userId: 'current_user', // Replace with actual user ID
-      userName: 'Current User', // Replace with actual user name
-      userAvatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face',
+      userId: 'current_user',
+      // Replace with actual user ID
+      userName: 'Current User',
+      // Replace with actual user name
+      userAvatar:
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face',
       content: text,
       timestamp: DateTime.now(),
     );
@@ -115,14 +127,17 @@ class _CommentScreenState extends State<CommentScreen> {
     if (text.isEmpty) return;
 
     setState(() {
-      final parentIndex = _comments.indexWhere((comment) => comment.id == parentCommentId);
+      final parentIndex = _comments.indexWhere(
+        (comment) => comment.id == parentCommentId,
+      );
       if (parentIndex != -1) {
         final parentComment = _comments[parentIndex];
         final newReply = Comment(
           id: '${parentComment.id}-${parentComment.replies!.length + 1}',
           userId: 'current_user',
           userName: 'Current User',
-          userAvatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face',
+          userAvatar:
+              'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face',
           content: text,
           timestamp: DateTime.now(),
         );
@@ -146,6 +161,7 @@ class _CommentScreenState extends State<CommentScreen> {
     _replyController.clear();
     FocusScope.of(context).requestFocus(FocusNode());
     Future.delayed(Duration(milliseconds: 100), () {
+      // ignore: use_build_context_synchronously
       FocusScope.of(context).requestFocus(_commentFocusNode);
     });
   }
@@ -171,15 +187,16 @@ class _CommentScreenState extends State<CommentScreen> {
       }
     });
   }
+
   // void _toggleReplyLike(Comment reply) {
   //   setState(() {
-  //     final index = _comments[7].replies.indexWhere((c) => c.id == reply.id);
+  //     final index = _comments[7].replies?.indexWhere((c) => c.id == reply.id);
   //     if (index != -1) {
   //       final updatedComment = reply.copyWith(
   //         likes: reply.isLiked ? reply.likes - 1 : reply.likes + 1,
   //         isLiked: !reply.isLiked,
   //       );
-  //       _comments[index] = updatedComment;
+  //       _comments[7].replies[index] = updatedComment;
   //     }
   //   });
   // }
@@ -200,159 +217,162 @@ class _CommentScreenState extends State<CommentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Comments',
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
+        title: Text('Comments', style: Theme.of(context).textTheme.titleMedium),
         backgroundColor: Theme.of(context).colorScheme.surface,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.onSurface),
+          icon: Icon(
+            Icons.arrow_back,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: Column(
-        children: [
-          // Reply Banner
-          if (_replyingToCommentId != null)
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-              color: Theme.of(context).colorScheme.primary.withAlpha((255*0.1).toInt()),
-              child: Row(
-                children: [
-                  Text(
-                    'Replying to $_replyingToUserName',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  ),
-                  Spacer(),
-                  GestureDetector(
-                    onTap: _cancelReply,
-                    child: Icon(
-                      Icons.close,
-                      size: 18.r,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-          // Comments List
-          Expanded(
-            child: _comments.isEmpty
-                ? Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.comment_outlined,
-                    size: 64.r,
-                    color: Colors.grey[400],
-                  ),
-                  SizedBox(height: 16.h),
-                  Text(
-                    'No comments yet',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Colors.grey[600],
-                    ),
-                  ),
-                  SizedBox(height: 8.h),
-                  Text(
-                    'Be the first to comment!',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.grey[500],
-                    ),
-                  ),
-                ],
-              ),
-            )
-                : ListView.builder(
-              padding: EdgeInsets.all(16.r),
-              itemCount: _comments.length,
-              itemBuilder: (context, index) {
-                return _buildCommentItem(_comments[index]);
-              },
-            ),
-          ),
-
-          // Comment Input
-          Container(
-            padding: EdgeInsets.all(16.r),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surface,
-              border: Border(
-                top: BorderSide(
-                  color: Theme.of(context).colorScheme.onSurface.withAlpha((255*0.1).toInt()),
-                ),
-              ),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surface,
-                      borderRadius: BorderRadius.circular(25.r),
-                      border: Border.all(
-                        color: Theme.of(context).colorScheme.onSurface.withAlpha((255*0.2).toInt()),
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Reply Banner
+            if (_replyingToCommentId != null)
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+                color: Theme.of(
+                  context,
+                ).colorScheme.primary.withAlpha((255 * 0.1).toInt()),
+                child: Row(
+                  children: [
+                    Text(
+                      'Replying to $_replyingToUserName',
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: TextField(
-                            style: Theme.of(context).textTheme.bodySmall,
-                            controller: _replyingToCommentId != null
-                                ? _replyController
-                                : _commentController,
-                            focusNode: _commentFocusNode,
-                            maxLines: null,
-                            textInputAction: TextInputAction.send,
-                            onSubmitted: (_) => _replyingToCommentId != null
-                                ? _postReply(_replyingToCommentId!)
-                                : _postComment(),
-                            decoration: InputDecoration(
-                              hintText: _replyingToCommentId != null
-                                  ? 'Write a reply...'
-                                  : 'Add a comment...',
-                              hintStyle: Theme.of(context).textTheme.bodySmall,
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.symmetric(
-                                horizontal: 16.w,
-                                vertical: 12.h,
+                    Spacer(),
+                    GestureDetector(
+                      onTap: _cancelReply,
+                      child: Icon(
+                        Icons.close,
+                        size: 18.r,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+            // Comments List
+            Expanded(
+              child: _comments.isEmpty
+                  ? Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.comment_outlined,
+                            size: 64.r,
+                            color: Colors.grey[400],
+                          ),
+                          SizedBox(height: 16.h),
+                          Text(
+                            'No comments yet',
+                            style: Theme.of(context).textTheme.bodyLarge
+                                ?.copyWith(color: Colors.grey[600]),
+                          ),
+                          SizedBox(height: 8.h),
+                          Text(
+                            'Be the first to comment!',
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(color: Colors.grey[500]),
+                          ),
+                        ],
+                      ),
+                    )
+                  : ListView.builder(
+                      padding: EdgeInsets.all(16.r),
+                      itemCount: _comments.length,
+                      itemBuilder: (context, index) {
+                        return _buildCommentItem(_comments[index]);
+                      },
+                    ),
+            ),
+
+            // Comment Input
+            Container(
+              padding: EdgeInsets.all(16.r),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surface,
+                border: Border(
+                  top: BorderSide(
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withAlpha((255 * 0.1).toInt()),
+                  ),
+                ),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.surface,
+                        borderRadius: BorderRadius.circular(25.r),
+                        border: Border.all(
+                          color: Theme.of(context).colorScheme.onSurface
+                              .withAlpha((255 * 0.2).toInt()),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              style: Theme.of(context).textTheme.bodySmall,
+                              controller: _replyingToCommentId != null
+                                  ? _replyController
+                                  : _commentController,
+                              focusNode: _commentFocusNode,
+                              maxLines: null,
+                              textInputAction: TextInputAction.send,
+                              onSubmitted: (_) => _replyingToCommentId != null
+                                  ? _postReply(_replyingToCommentId!)
+                                  : _postComment(),
+                              decoration: InputDecoration(
+                                hintText: _replyingToCommentId != null
+                                    ? 'Write a reply...'
+                                    : 'Add a comment...',
+                                hintStyle: Theme.of(
+                                  context,
+                                ).textTheme.bodySmall,
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 16.w,
+                                  vertical: 12.h,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(width: 12.w),
-                GestureDetector(
-                  onTap: _replyingToCommentId != null
-                      ? () => _postReply(_replyingToCommentId!)
-                      : _postComment,
-                  child: Container(
-                    padding: EdgeInsets.all(12.r),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      Icons.send,
-                      size: 20.r,
-                      color: Colors.white,
+                  SizedBox(width: 12.w),
+                  GestureDetector(
+                    onTap: _replyingToCommentId != null
+                        ? () => _postReply(_replyingToCommentId!)
+                        : _postComment,
+                    child: Container(
+                      padding: EdgeInsets.all(12.r),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(Icons.send, size: 20.r, color: Colors.white),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -412,18 +432,25 @@ class _CommentScreenState extends State<CommentScreen> {
                         child: Row(
                           children: [
                             Icon(
-                              comment.isLiked ? Icons.favorite : Icons.favorite_border,
+                              comment.isLiked
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
                               size: 18.r,
                               color: comment.isLiked
                                   ? Colors.red
-                                  : Theme.of(context).colorScheme.onSurface.withAlpha((255*0.6).toInt()),
+                                  : Theme.of(context).colorScheme.onSurface
+                                        .withAlpha((255 * 0.6).toInt()),
                             ),
                             SizedBox(width: 4.w),
                             Text(
                               comment.likes.toString(),
-                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: Theme.of(context).colorScheme.onSurface.withAlpha((255*0.6).toInt()),
-                              ),
+                              style: Theme.of(context).textTheme.bodySmall
+                                  ?.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface
+                                        .withAlpha((255 * 0.6).toInt()),
+                                  ),
                             ),
                           ],
                         ),
@@ -436,14 +463,19 @@ class _CommentScreenState extends State<CommentScreen> {
                             Icon(
                               Icons.reply,
                               size: 18.r,
-                              color: Theme.of(context).colorScheme.onSurface.withAlpha((255*0.6).toInt()),
+                              color: Theme.of(context).colorScheme.onSurface
+                                  .withAlpha((255 * 0.6).toInt()),
                             ),
                             SizedBox(width: 4.w),
                             Text(
                               'Reply',
-                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: Theme.of(context).colorScheme.onSurface.withAlpha((255*0.6).toInt()),
-                              ),
+                              style: Theme.of(context).textTheme.bodySmall
+                                  ?.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface
+                                        .withAlpha((255 * 0.6).toInt()),
+                                  ),
                             ),
                           ],
                         ),
@@ -462,7 +494,9 @@ class _CommentScreenState extends State<CommentScreen> {
           Padding(
             padding: EdgeInsets.only(left: 32.w),
             child: Column(
-              children: comment.replies!.map((reply) => _buildReplyItem(reply)).toList(),
+              children: comment.replies!
+                  .map((reply) => _buildReplyItem(reply))
+                  .toList(),
             ),
           ),
         ],
@@ -498,9 +532,9 @@ class _CommentScreenState extends State<CommentScreen> {
                     SizedBox(width: 8.w),
                     Text(
                       _formatTimeAgo(reply.timestamp),
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Colors.grey[600],
-                      ),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodySmall?.copyWith(color: Colors.grey[600]),
                     ),
                   ],
                 ),
@@ -517,19 +551,24 @@ class _CommentScreenState extends State<CommentScreen> {
                       child: Row(
                         children: [
                           Icon(
-                            reply.isLiked ? Icons.favorite : Icons.favorite_border,
+                            reply.isLiked
+                                ? Icons.favorite
+                                : Icons.favorite_border,
                             size: 16.r,
                             color: reply.isLiked
                                 ? Colors.red
-                                : Theme.of(context).colorScheme.onSurface.withAlpha((255*0.6).toInt()),
+                                : Theme.of(context).colorScheme.onSurface
+                                      .withAlpha((255 * 0.6).toInt()),
                           ),
                           SizedBox(width: 4.w),
                           Text(
                             reply.likes.toString(),
-                            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Theme.of(context).colorScheme.onSurface.withAlpha((255*0.6).toInt()),
-                              fontSize: 12,
-                            ),
+                            style: Theme.of(context).textTheme.bodySmall
+                                ?.copyWith(
+                                  color: Theme.of(context).colorScheme.onSurface
+                                      .withAlpha((255 * 0.6).toInt()),
+                                  fontSize: 12,
+                                ),
                           ),
                         ],
                       ),
@@ -552,11 +591,6 @@ class _CommentScreenState extends State<CommentScreen> {
     super.dispose();
   }
 }
-
-
-
-
-
 
 // import 'package:flutter/material.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';

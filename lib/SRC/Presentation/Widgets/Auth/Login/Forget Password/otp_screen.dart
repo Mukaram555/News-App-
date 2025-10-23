@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/SRC/Presentation/Common/Button/custom_button.dart';
-import 'package:news_app/SRC/Presentation/Widgets/components/password_reset_screen.dart';
+import 'package:news_app/SRC/Presentation/Widgets/Auth/Login/Forget%20Password/password_reset_screen.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});
@@ -91,79 +91,92 @@ class _OtpScreenState extends State<OtpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 40.0.h),
-        child: Form(
-          key: otpKey,
-          autovalidateMode: AutovalidateMode.onUnfocus,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Icon(Icons.arrow_back_ios),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+          child: Form(
+            key: otpKey,
+            autovalidateMode: AutovalidateMode.onUnfocus,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(Icons.arrow_back_ios),
+                  ),
                 ),
-              ),
-              SizedBox(height: 20.0.h),
-              Text(
-                'OTP Verification',
-                style: Theme.of(context).textTheme.displayLarge,
-              ),
-              SizedBox(height: 20.0.h),
-              Text(
-                'Enter the OTP sent to +67-1234-5678-9',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-              SizedBox(height: 30.0.h),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(
-                      4,
-                      (index) => OtpInputContainer(
-                        controller: _controllers[index],
-                        onValidate: _validater,
-                        focusNode: _focusNodes[index],
-                        onChanged: (val) => _onOtpChanged(val, index),
+                SizedBox(height: 20.0.h),
+                Text(
+                  'OTP Verification',
+                  style: Theme.of(context).textTheme.displayLarge,
+                ),
+                SizedBox(height: 20.0.h),
+                Text(
+                  'Enter the OTP sent to +67-1234-5678-9',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                SizedBox(height: 30.0.h),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: List.generate(
+                        4,
+                        (index) => OtpInputContainer(
+                          controller: _controllers[index],
+                          onValidate: _validater,
+                          focusNode: _focusNodes[index],
+                          onChanged: (val) => _onOtpChanged(val, index),
+                        ),
                       ),
                     ),
-                  ),
-                  isValid == true
-                      ? Padding(
-                          padding: EdgeInsets.only(left: 14.0.w),
-                          child: Text(
-                            '! Invalid OTP or Empty',
-                            style: Theme.of(context).textTheme.headlineLarge,
-                          ),
-                        )
-                      : SizedBox.shrink(),
-                  SizedBox(height: 20.0.h),
-                  ValueListenableBuilder(
-                    valueListenable: counter,
-                    builder: (context, value, child) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Send code in ',
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
-                          counter.value == 0
-                              ? InkWell(
-                                  onTap: () {
-                                    counter.value = 60;
-                                    count();
-                                  },
-                                  child: Text(
-                                    'Resend',
+                    isValid == true
+                        ? Padding(
+                            padding: EdgeInsets.only(left: 14.0.w),
+                            child: Text(
+                              '! Invalid OTP or Empty',
+                              style: Theme.of(context).textTheme.headlineLarge,
+                            ),
+                          )
+                        : SizedBox.shrink(),
+                    SizedBox(height: 20.0.h),
+                    ValueListenableBuilder(
+                      valueListenable: counter,
+                      builder: (context, value, child) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Send code in ',
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                            counter.value == 0
+                                ? InkWell(
+                                    onTap: () {
+                                      counter.value = 60;
+                                      count();
+                                    },
+                                    child: Text(
+                                      'Resend',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.copyWith(
+                                            color: Theme.of(
+                                              context,
+                                            ).colorScheme.error,
+                                          ),
+                                    ),
+                                  )
+                                : Text(
+                                    '${counter.value}s',
                                     style: Theme.of(context).textTheme.bodySmall
                                         ?.copyWith(
                                           color: Theme.of(
@@ -171,23 +184,14 @@ class _OtpScreenState extends State<OtpScreen> {
                                           ).colorScheme.error,
                                         ),
                                   ),
-                                )
-                              : Text(
-                                  '${counter.value}s',
-                                  style: Theme.of(context).textTheme.bodySmall
-                                      ?.copyWith(
-                                        color: Theme.of(
-                                          context,
-                                        ).colorScheme.error,
-                                      ),
-                                ),
-                        ],
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ],
+                          ],
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

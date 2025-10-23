@@ -1,3 +1,5 @@
+// ignore: file_names
+// Notification
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/SRC/Presentation/Widgets/components/Notification/details_notification.dart';
@@ -10,7 +12,7 @@ class NotificationPage extends StatelessWidget  {
     List url = [
       'https://assets.bucketlistly.blog/sites/5adf778b6eabcc00190b75b1/content_entry5adf77af6eabcc00190b75b6/6075185986d092000b192d0a/files/best-free-travel-images-main-image-hd-op.webp'
       ,'https://media.istockphoto.com/id/814423752/photo/eye-of-model-with-colorful-art-make-up-close-up.jpg?s=612x612&w=0&k=20&c=l15OdMWjgCKycMMShP8UK94ELVlEGvt7GmB_esHWPYE=',
-'https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg?cs=srgb&dl=pexels-hsapir-1054655.jpg&fm=jpg',
+        'https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg?cs=srgb&dl=pexels-hsapir-1054655.jpg&fm=jpg',
    'https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg', ];
     return Scaffold(
       body: SafeArea(
@@ -33,7 +35,10 @@ class NotificationPage extends StatelessWidget  {
                         onTap: (){
                           showDialog(context: context, builder:(_) {
                             return AlertDialog(
-
+                              icon: Icon(Icons.workspaces),
+                              iconColor: Colors.green,
+                              title: Text('Notification Settings in Progrss'),
+                              titleTextStyle: Theme.of(context).textTheme.bodySmall,
                             );
                           });
                         },
@@ -93,14 +98,14 @@ class NotificationPage extends StatelessWidget  {
                                             children: [
                                               Padding(
                                                 padding: const EdgeInsets.all(8.0),
-                                                child: Container(
+                                                child: SizedBox(
                                                     width: 200.w,
                                                     child: Text('The New York Times', style: Theme.of(context).textTheme.bodySmall,)),
                                               ),
                                               Padding(
 
                                                   padding: EdgeInsets.all(2.0),
-                                                child:Container(
+                                                child:SizedBox(
                                                     width: 200.0.w,
                                                     height: 45.0.h,
                                                     child: Text(
@@ -110,7 +115,7 @@ class NotificationPage extends StatelessWidget  {
                                               ),
                                               Padding(
                                                 padding: EdgeInsets.all(2.0),
-                                                child: Container(
+                                                child: SizedBox(
                                                     width: 200.w
                                                     ,
                                                     child: Text('2025 , 9 :00 AM', style: Theme.of(context).textTheme.bodySmall,)),
@@ -197,13 +202,13 @@ class NotificationPage extends StatelessWidget  {
                                   children: [
                                     Padding(
                                       padding: EdgeInsets.all(2.0),
-                                      child: Container(
+                                      child: SizedBox(
                                           width: 200.w,
                                           child: Text('The New York Times', style: Theme.of(context).textTheme.bodySmall,)),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.all(2.0),
-                                      child: Container(
+                                      child: SizedBox(
                                           width: 200.0.w,
                                           height: 45.0.h,
                                           child: Text(
@@ -213,7 +218,7 @@ class NotificationPage extends StatelessWidget  {
                                     ),
                                     Padding(
                                       padding: EdgeInsets.all(2.0),
-                                      child: Container(
+                                      child: SizedBox(
                                           width: 200.w,
                                           child: Text('2025 , 9 :00 AM', style: Theme.of(context).textTheme.bodySmall,)),
                                     ),
