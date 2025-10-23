@@ -1,5 +1,5 @@
 // lib/SRC/Presentation/Screens/comment_screen.dart
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/SRC/Data/Models/comment_model.dart';
@@ -146,6 +146,7 @@ class _CommentScreenState extends State<CommentScreen> {
     _replyController.clear();
     FocusScope.of(context).requestFocus(FocusNode());
     Future.delayed(Duration(milliseconds: 100), () {
+      // ignore: use_build_context_synchronously
       FocusScope.of(context).requestFocus(_commentFocusNode);
     });
   }
@@ -173,13 +174,13 @@ class _CommentScreenState extends State<CommentScreen> {
   }
   // void _toggleReplyLike(Comment reply) {
   //   setState(() {
-  //     final index = _comments[7].replies.indexWhere((c) => c.id == reply.id);
+  //     final index = _comments[7].replies?.indexWhere((c) => c.id == reply.id);
   //     if (index != -1) {
   //       final updatedComment = reply.copyWith(
   //         likes: reply.isLiked ? reply.likes - 1 : reply.likes + 1,
   //         isLiked: !reply.isLiked,
   //       );
-  //       _comments[index] = updatedComment;
+  //       _comments[7].replies[index] = updatedComment;
   //     }
   //   });
   // }

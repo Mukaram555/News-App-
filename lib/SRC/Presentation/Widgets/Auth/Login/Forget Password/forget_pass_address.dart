@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/SRC/Presentation/Common/Button/custom_button.dart';
 import 'package:news_app/SRC/Presentation/Common/Textfield/text_field.dart';
-import 'package:news_app/SRC/Presentation/Widgets/components/otp_screen.dart';
+import 'package:news_app/SRC/Presentation/Widgets/Auth/Login/Forget%20Password/otp_screen.dart';
 
 class ForgetPassAddress extends StatelessWidget {
   const ForgetPassAddress({super.key});
@@ -30,7 +30,7 @@ class ForgetPassAddress extends StatelessWidget {
                 style: Theme.of(context).textTheme.displayLarge,
               ),
               SizedBox(height: 10.0.h),
-              Container(
+              SizedBox(
                 width: 300.0.w,
                 child: Text(
                   '''Don’t worry! it happens. Please enter the address associated with your account.''',
@@ -50,7 +50,7 @@ class ForgetPassAddress extends StatelessWidget {
         padding: EdgeInsets.all(20.0),
         child: InkWell(
           onTap: () {
-            print('=====================');
+            // print('=====================');
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => OtpScreen()),

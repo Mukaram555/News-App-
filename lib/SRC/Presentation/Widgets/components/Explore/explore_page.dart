@@ -75,14 +75,14 @@ class _ExplorePageState extends State<ExplorePage> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Container(
+                            child: SizedBox(
                                 width: 160.0.w,
                                 child: Text(TopicsModelData[index].topicsName, style: Theme.of(context).textTheme.bodySmall,)),
                           ),
                           Padding(
 
                             padding: EdgeInsets.all(2.0),
-                            child:Container(
+                            child:SizedBox(
                                 width: 160.0.w,
                                 height: 45.0.h,
                                 child: Text(
@@ -109,7 +109,7 @@ class _ExplorePageState extends State<ExplorePage> {
                           borderRadius: BorderRadius.circular(10.0.r),
                             border: BoxBorder.all(color: Theme.of(context).colorScheme.primary),
                           ),
-                          child: Center(child: Text('Save', style: TopicsModelData[index].isSaved ?Theme.of(context).textTheme.bodySmall?.copyWith(color: Theme.of(context).colorScheme.onPrimary) :Theme.of(context).textTheme.bodySmall?.copyWith(color: Theme.of(context).colorScheme.primary) ,)),
+                          child: Center(child: Text(TopicsModelData[index].isSaved?'Saved':'Save', style: TopicsModelData[index].isSaved ?Theme.of(context).textTheme.bodySmall?.copyWith(color: Theme.of(context).colorScheme.onPrimary) :Theme.of(context).textTheme.bodySmall?.copyWith(color: Theme.of(context).colorScheme.primary) ,)),
                         ),
                       ),
                     ),

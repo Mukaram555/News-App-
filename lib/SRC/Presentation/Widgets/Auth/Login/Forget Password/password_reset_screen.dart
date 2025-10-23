@@ -70,12 +70,16 @@ class PasswordResetScreen extends StatelessWidget {
                 ),
                 (Route<dynamic> route) => false,
               );
-            } else if (password.value.text.isEmpty ==
-                    confermPassword.value.text.isEmpty ||
-                password.value.text.isEmpty ||
+            } else if (password.value.text != confermPassword.value.text) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Password not Match we can not be Procesed'),
+                ),
+              );
+            } else if (password.value.text.isEmpty ||
                 confermPassword.value.text.isEmpty) {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Empty Password not be Process')),
+                const SnackBar(content: Text('The Password Is Empty')),
               );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(

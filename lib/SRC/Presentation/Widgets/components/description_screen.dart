@@ -57,7 +57,7 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                   height: 72.h,
                   width: 270.w,
                   child: Text(
@@ -68,7 +68,7 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                     ).textTheme.displaySmall!.copyWith(fontSize: 20),
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: 45.h,
                   width: 270.w,
                   child: Text(
@@ -85,7 +85,7 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   height: 16.h,
                   width: 50.w,
                   child: Row(
@@ -97,7 +97,7 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                     ],
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: 50.h,
                   width: 130.w,
                   child: Row(
@@ -109,7 +109,7 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                               onTap: () {
                                 if (index == 1 || index == 2) {
                                   index--;
-                                  print(index);
+                                  // print(index);
                                 }
                                 setState(() {});
                               },

@@ -100,6 +100,7 @@ ThemeData darkTheme = ThemeData(
       fontSize: 16,
     ),
   ),
+
   iconTheme: IconThemeData(size: 24, color: ColorScheme.dark().onSurface),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,

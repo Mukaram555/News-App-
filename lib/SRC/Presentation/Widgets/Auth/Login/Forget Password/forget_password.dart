@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/SRC/Presentation/Common/Forget%20pass%20card/forget_card.dart';
-import 'package:news_app/SRC/Presentation/Widgets/Auth/Login/UI%20Screens/forget_pass_address.dart';
+import 'package:news_app/SRC/Presentation/Widgets/Auth/Login/Forget%20Password/forget_pass_address.dart';
 
 class ForgetPassword extends StatelessWidget {
   const ForgetPassword({super.key});
@@ -28,7 +28,7 @@ class ForgetPassword extends StatelessWidget {
               style: Theme.of(context).textTheme.displayLarge,
             ),
             SizedBox(height: 10.0.h),
-            Container(
+            SizedBox(
               width: 300.0.w,
               child: Text(
                 '''Don’t worry! it happens. Please select the email or number associated with your account.''',

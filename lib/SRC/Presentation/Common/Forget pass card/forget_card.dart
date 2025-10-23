@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,9 +22,9 @@ class ForgetCard extends StatefulWidget {
 class _ForgetCardState extends State<ForgetCard> {
   @override
   Widget build(BuildContext context) {
-    var faker = new Faker();
-    int? _selectedOption = widget.select;
-    ValueChanged<Object?>? _change = widget.change;
+    var faker = Faker();
+    int? selectedOption = widget.select;
+    ValueChanged<Object?>? change = widget.change;
 
     return Container(
       height: 100.0.h,
@@ -45,7 +47,7 @@ class _ForgetCardState extends State<ForgetCard> {
               child: Icon(Icons.email_outlined, color: Colors.white),
             ),
           ),
-          Container(
+          SizedBox(
             height: 60.0.h,
             width: 200.0.w,
             child: Column(
@@ -62,7 +64,7 @@ class _ForgetCardState extends State<ForgetCard> {
                 Text(
                   widget.isMail == true
                       ? faker.internet.email()
-                      : faker.internet.userName(),
+                      : faker.phoneNumber.us(),
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(
                     context,
@@ -73,14 +75,18 @@ class _ForgetCardState extends State<ForgetCard> {
           ),
           widget.isMail == true
               ? Radio(
-                  value: _selectedOption == 1 ? widget.select : false,
+                  value: selectedOption == 1 ? widget.select : false,
+                  // ignore: duplicate_ignore
+                  // ignore: deprecated_member_use
                   groupValue: widget.select,
-                  onChanged: _change,
+                  onChanged: change,
                 )
               : Radio(
-                  value: _selectedOption == 2 ? widget.select : false,
+                  value: selectedOption == 2 ? widget.select : false,
                   groupValue: widget.select,
-                  onChanged: _change,
+                  // ignore: duplicate_ignore
+                  // ignore: deprecated_member_use
+                  onChanged: change,
                 ),
         ],
       ),
