@@ -68,8 +68,8 @@ class _PublishScreenState extends State<PublishScreen> {
   //     if (user == null) {
   //       // Sign in with email & password (replace with your own credentials)
   //       final response = await client.auth.signInWithPassword(
-  //         email: 'muzamelahmad60@gmail.com',
-  //         password: 'Muzamel4321@',
+  //         email: 'your Mail',
+  //         password: 'Password',
   //       );
   //       user = response.user;
   //       if (user == null) {
