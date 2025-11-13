@@ -16,16 +16,10 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Supabase.initialize(
-    url: 'https://ujidhugjwvogclvtouwx.supabase.co',
+    url: '',
     anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVqaWRodWdqd3ZvZ2NsdnRvdXd4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwMTAyMDYsImV4cCI6MjA3ODU4NjIwNn0.04hE0W4oVg0o84pbuSaNcUbTXuXKb4tdWT2Q7_XftEg ',
+        '',
   );
-  // await Supabase.initialize(
-  //   url: 'https://ujidhugjwvogclvtouwx.supabase.co',
-  //   // 👈 This is the Server URL
-  //   anonKey:
-  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVqaWRodWdqd3ZvZ2NsdnRvdXd4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwMTAyMDYsImV4cCI6MjA3ODU4NjIwNn0.04hE0W4oVg0o84pbuSaNcUbTXuXKb4tdWT2Q7_XftEg ', // 👈 This is the anon public key
-  // );
 
   runApp(const MyApp());
 }
